@@ -7,7 +7,7 @@ export default function Header() {
     <Container>
       <img
         src={logo}
-        alt="Logo MyContacts"
+        alt="MyContacts logo"
         width="201"
       />
       <InputSearchContainer>
