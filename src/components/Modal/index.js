@@ -30,7 +30,7 @@ export default function Modal({ danger }) {
         </Footer>
       </Container>
     </Overlay>,
-    document.getElementById('modal-root'),
+    document.getElementById('fullscreen-root'),
   );
 }
 
