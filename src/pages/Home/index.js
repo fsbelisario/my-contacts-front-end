@@ -8,14 +8,14 @@ import arrow from '../../assets/images/icons/arrow.svg';
 import edit from '../../assets/images/icons/edit.svg';
 import trash from '../../assets/images/icons/trash.svg';
 
-import Loader from '../../components/Loader';
+// import Loader from '../../components/Loader';
 // import Modal from '../../components/Modal';
 
 export default function Home() {
   return (
     <Container>
       {/* <Modal danger /> */}
-      <Loader />
+      {/* <Loader /> */}
       <InputSearchContainer>
         <input
           type="text"
