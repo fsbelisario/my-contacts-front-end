@@ -40,7 +40,7 @@ margin-top: 32px;
   border: 2px solid ${({ theme }) => theme.colors.primary.main};;
   padding: 8px 16px;
   border-radius: 4px;
-  transition: all 0.2s ease -in;
+  transition: all 0.2s ease-in;
 
     &:hover {
     background: ${({ theme }) => theme.colors.primary.main};
@@ -84,20 +84,20 @@ justify-content: space-between;
   }
 
   .info {
-    .contact - name {
+    .contact-name {
     display: flex;
     align-items: center;
 
       small {
-      background: ${({ theme }) => theme.colors.primary.lighter};
-      color: ${({ theme }) => theme.colors.primary.main};
-      font-weight: bold;
-      text-transform: uppercase;
-      padding: 4px;
-      border-radius: 4px;
-      margin-left: 8px;
-    }
-  }
+        background: ${({ theme }) => theme.colors.primary.lighter};
+        color: ${({ theme }) => theme.colors.primary.main};
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 4px;
+        border-radius: 4px;
+        margin-left: 8px;
+      }
+   }
 
     span {
     display: block;
