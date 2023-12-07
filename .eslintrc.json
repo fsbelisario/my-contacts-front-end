@@ -36,6 +36,7 @@
     "quotes": [
       "error",
       "single"
-    ]
+    ],
+    "react/jsx-no-bind": "off"
   }
 }

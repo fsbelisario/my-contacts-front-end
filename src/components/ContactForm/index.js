@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 import { Form, ButtonContainer } from './styles';
 
@@ -11,18 +11,27 @@ import Button from '../Button';
 
 export default function ContactForm({ buttonLabel }) {
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [category, setCategory] = useState('');
 
-  const emailInput = useRef(null);
+  function handleSubmit(event) {
+    event?.preventDefault();
 
-  function handleClick() {
-    console.log(emailInput.current.value);
+    console.log({
+      name, email, phone, category,
+    });
+  }
+
+  function handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleSubmit();
+    }
   }
 
   return (
-    <Form>
-      <button type="button" onClick={handleClick}>
-        Loga emailInput
-      </button>
+    <Form onSubmit={handleSubmit} onKeyPress={handleKeyPress}>
       <FormGroup>
         <Input
           placeholder="Nome"
@@ -30,22 +39,28 @@ export default function ContactForm({ buttonLabel }) {
           onChange={(e) => setName(e.target.value)}
         />
       </FormGroup>
-      <FormGroup
-        error="Formato de e-mail inválido."
-      >
+      <FormGroup>
         <Input
           placeholder="E-mail"
-          error
-          defaultValue={null}
-          ref={emailInput}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </FormGroup>
       <FormGroup>
-        <Input placeholder="Telefone" />
+        <Input
+          placeholder="Telefone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
       </FormGroup>
       <FormGroup>
-        <Select>
-          <option value="instagram">Instagam</option>
+        <Select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option value="">Categoria</option>
+          <option value="instagram">Instagram</option>
+          <option value="discord">Discord</option>
         </Select>
       </FormGroup>
       <ButtonContainer>
