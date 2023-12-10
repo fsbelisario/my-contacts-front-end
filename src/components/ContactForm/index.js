@@ -7,6 +7,7 @@ import { Form, ButtonContainer } from './styles';
 import useErrors from '../../hooks/useErrors';
 
 import isEmailValid from '../../utils/isEmailValid';
+import formatPhone from '../../utils/formatPhone';
 
 import FormGroup from '../FormGroup';
 import Input from '../Input';
@@ -42,7 +43,7 @@ export default function ContactForm({ buttonLabel }) {
   }
 
   function handlePhoneChange(event) {
-    setPhone(event.target.value);
+    setPhone(formatPhone(event.target.value));
   }
 
   function handleCategoryChange(event) {
@@ -53,7 +54,7 @@ export default function ContactForm({ buttonLabel }) {
     event?.preventDefault();
 
     // console.log({
-    //   name, email, phone, category,
+    //   name, email, phone: phone.replace(/\D/g, ''), category,
     // });
   }
 
@@ -90,6 +91,7 @@ export default function ContactForm({ buttonLabel }) {
       <FormGroup>
         <Input
           placeholder="Telefone"
+          maxLength="15"
           value={phone}
           onChange={handlePhoneChange}
         />
