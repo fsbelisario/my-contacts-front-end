@@ -65,7 +65,11 @@ export default function ContactForm({ buttonLabel }) {
   }
 
   return (
-    <Form onSubmit={handleSubmit} onKeyDown={handleKeyPress}>
+    <Form
+      onSubmit={handleSubmit}
+      onKeyDown={handleKeyPress}
+      noValidate
+    >
       <FormGroup error={getErrorMessageByFieldName('name')}>
         <Input
           placeholder="Nome"
