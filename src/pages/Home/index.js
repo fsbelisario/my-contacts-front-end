@@ -32,22 +32,24 @@ export default function Home() {
   // ));
 
   useEffect(() => {
-    setIsLoading(true);
+    async function loadContacts() {
+      try {
+        setIsLoading(true);
 
-    fetch(`http://localhost:3001/contacts?orderBy=${orderBy}`)
-      .then(async (response) => {
-        await delay(2000);// Delay forçado para simular o Loader
+        const response = await fetch(`http://localhost:3001/contacts?orderBy=${orderBy}`);
+
+        await delay(500);// Delay forçado para simular o Loader
 
         const json = await response.json();
         setContacts(json);
-        console.log({ json });
-      })
-      .catch((error) => {
+      } catch (error) {
         console.log('error', error);
-      })
-      .finally(() => {
+      } finally {
         setIsLoading(false);
-      });
+      }
+    }
+
+    loadContacts();
   }, [orderBy]);
 
   function handleToggleOrderBy() {

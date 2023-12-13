@@ -5,7 +5,8 @@
   },
   "extends": [
     "plugin:react/recommended",
-    "airbnb"
+    "airbnb",
+    "plugin:react-hooks/recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -15,7 +16,8 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+    "react",
+    "react-hooks"
   ],
   "rules": {
     "linebreak-style": [
@@ -38,6 +40,8 @@
       "single"
     ],
     "react/jsx-no-bind": "off",
-    "no-promise-executor-return": "off"
+    "no-promise-executor-return": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
