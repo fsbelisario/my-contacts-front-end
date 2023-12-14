@@ -10,8 +10,9 @@ import arrow from '../../assets/images/icons/arrow.svg';
 import edit from '../../assets/images/icons/edit.svg';
 import trash from '../../assets/images/icons/trash.svg';
 
-import delay from '../../utils/delay';
 import formatPhone from '../../utils/formatPhone';
+
+import ContactsService from '../../services/ContactsService';
 
 import Loader from '../../components/Loader';
 
@@ -36,12 +37,9 @@ export default function Home() {
       try {
         setIsLoading(true);
 
-        const response = await fetch(`http://localhost:3001/contacts?orderBy=${orderBy}`);
+        const contactsList = await ContactsService.listContacts(orderBy);
 
-        await delay(500);// Delay forçado para simular o Loader
-
-        const json = await response.json();
-        setContacts(json);
+        setContacts(contactsList);
       } catch (error) {
         console.log('error', error);
       } finally {
