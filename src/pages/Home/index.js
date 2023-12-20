@@ -16,6 +16,8 @@ import ContactsService from '../../services/ContactsService';
 
 import Loader from '../../components/Loader';
 
+import APIError from '../../errors/APIError';
+
 // import Modal from '../../components/Modal';
 
 export default function Home() {
@@ -41,7 +43,14 @@ export default function Home() {
 
         setContacts(contactsList);
       } catch (error) {
-        console.log('error', error);
+        if (error instanceof APIError) {
+          console.log({ error });
+          // Mostrar mensagem de erro para o usuário
+        } else {
+          console.log({ error });
+          // Mostrar mensagem de erro para o usuário
+          // Enviar os dados do erro para um serviço de log
+        }
       } finally {
         setIsLoading(false);
       }
