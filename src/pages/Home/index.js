@@ -17,6 +17,7 @@ import {
   Card,
   ErrorContainer,
   EmptyListContainer,
+  SearchNotFountContainer,
 } from './styles';
 
 import arrow from '../../assets/images/icons/arrow.svg';
@@ -24,6 +25,7 @@ import edit from '../../assets/images/icons/edit.svg';
 import trash from '../../assets/images/icons/trash.svg';
 import sad from '../../assets/images/sad.svg';
 import emptyBox from '../../assets/images/empty-box.svg';
+import magnifierQuestion from '../../assets/images/magnifier-question.svg';
 
 import formatPhone from '../../utils/formatPhone';
 
@@ -137,11 +139,19 @@ export default function Home() {
               <img src={emptyBox} alt="Empty box" />
               <p>
                 Você aina não tem nenhum contato cadastrado!
-                Clique no botão <strong>"Novo contato"</strong> acima
+                Clique no botão <strong>Novo contato</strong> acima
                 para cadastrar o seu primeiro!
               </p>
             </EmptyListContainer>
           )}
+
+          {(contacts.length > 0 && filteredContacts.length === 0) && (
+            <SearchNotFountContainer>
+              <img src={magnifierQuestion} alt="Magnifier question" />
+              <span>Nenhum resultado foi encontrato para <strong>{searchTerm}</strong></span>
+            </SearchNotFountContainer>
+          )}
+
           {filteredContacts.length > 0 && (
             <ListHeader orderBy={orderBy}>
               <button
@@ -156,6 +166,7 @@ export default function Home() {
               </button>
             </ListHeader>
           )}
+
           {filteredContacts.map((contact) => (
             <Card key={contact.id}>
               <div className="info">
@@ -178,7 +189,6 @@ export default function Home() {
               </div>
             </Card>
           ))}
-
         </>
       )}
     </Container>
