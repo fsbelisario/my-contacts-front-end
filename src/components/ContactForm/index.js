@@ -82,6 +82,11 @@ export default function ContactForm({ buttonLabel, onSubmit }) {
     });
 
     setIsSSubmitting(false);
+
+    setName('');
+    setEmail('');
+    setPhone('');
+    setCategoryId('');
   }
 
   function handleKeyPress(event) {
