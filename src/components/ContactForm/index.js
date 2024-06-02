@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 
-import { forwardRef, useEffect, useState } from 'react';
+import {
+  forwardRef, useEffect, useImperativeHandle, useState,
+} from 'react';
 
 import { Form, ButtonContainer } from './styles';
 
@@ -34,17 +36,14 @@ const ContactForm = forwardRef(({ buttonLabel, onSubmit }, ref) => {
 
   const isFormValid = (name && errors.length === 0);
 
-  useEffect(() => {
-    const refObject = ref;
-    refObject.current = {
-      setFieldsValues: (contact) => {
-        setName(contact.name);
-        setEmail(contact.email);
-        setPhone(contact.phone);
-        setCategoryId(contact.category_id);
-      },
-    };
-  }, [ref]);
+  useImperativeHandle(ref, () => ({
+    setFieldsValues: (contact) => {
+      setName(contact.name);
+      setEmail(contact.email);
+      setPhone(contact.phone);
+      setCategoryId(contact.category_id);
+    },
+  }), []);
 
   useEffect(() => {
     async function loadCategories() {
