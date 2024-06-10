@@ -104,7 +104,7 @@ export default function Home() {
     try {
       setIsLoadingDelete(true);
 
-      await ContactsService.deleteContact(contactBeingDeleted.id + 1);
+      await ContactsService.deleteContact(contactBeingDeleted.id);
 
       toast({
         type: 'success',

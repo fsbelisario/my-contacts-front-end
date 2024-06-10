@@ -15,7 +15,7 @@ export default function Loader({ isLoading }) {
     <Overlay>
       <Spinner size={90} />
     </Overlay>,
-    document.getElementById('fullscreen-root'),
+    document.getElementById('loader-root'),
   );
 }
 

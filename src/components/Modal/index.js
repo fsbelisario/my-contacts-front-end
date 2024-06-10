@@ -48,7 +48,7 @@ export default function Modal({
         </Footer>
       </Container>
     </Overlay>,
-    document.getElementById('fullscreen-root'),
+    document.getElementById('modal-root'),
   );
 }
 
