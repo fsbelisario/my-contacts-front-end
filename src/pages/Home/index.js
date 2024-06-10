@@ -31,13 +31,11 @@ import formatPhone from '../../utils/formatPhone';
 
 import ContactsService from '../../services/ContactsService';
 
-import Loader from '../../components/Loader';
-
 import Button from '../../components/Button';
+import Loader from '../../components/Loader';
+import Modal from '../../components/Modal';
 
 // import APIError from '../../errors/APIError';
-
-// import Modal from '../../components/Modal';
 
 export default function Home() {
   const [contacts, setContacts] = useState([]);
@@ -91,6 +89,15 @@ export default function Home() {
     <Container>
       {/* <Modal danger /> */}
       <Loader isLoading={isLoading} />
+      <Modal
+        danger
+        title="Tem certeza de que deseja remover o contato?"
+        confirmLabel="Deletar"
+        onCancel={() => alert('cancelou')}
+        onConfirm={() => alert('confirmou')}
+      >
+        <span>teste corpo</span>
+      </Modal>
       {contacts.length > 0 && (
         <InputSearchContainer>
           <input
