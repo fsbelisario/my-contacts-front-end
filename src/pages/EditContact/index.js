@@ -8,7 +8,7 @@ import Loader from '../../components/Loader';
 
 import ContactsService from '../../services/ContactsService';
 
-import useIsMounted from '../../hooks/useIsMounted';
+import useSafeAsyncAction from '../../hooks/useSafeAsyncAction';
 
 import toast from '../../utils/toast';
 
@@ -22,33 +22,33 @@ export default function EditContact() {
 
   const history = useHistory();
 
-  const isMounted = useIsMounted();
+  const safeAsyncAction = useSafeAsyncAction();
 
   useEffect(() => {
     async function loadContact() {
       try {
         const contact = await ContactsService.getContactById(id);
 
-        if (isMounted()) {
+        safeAsyncAction(() => {
           contactFormRef.current.setFieldsValues(contact);
 
           setContactName(contact.name);
 
           setIsLoading(false);
-        }
+        });
       } catch {
-        if (isMounted()) {
+        safeAsyncAction(() => {
           history.push('/');
           toast({
             type: 'danger',
             text: 'Contato não encontrado.',
           });
-        }
+        });
       }
     }
 
     loadContact();
-  }, [id, history, isMounted]);
+  }, [id, history, safeAsyncAction]);
 
   async function handleSubmit(formData) {
     try {
