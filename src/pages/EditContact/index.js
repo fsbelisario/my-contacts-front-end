@@ -29,7 +29,7 @@ export default function EditContact() {
       try {
         const contact = await ContactsService.getContactById(id);
 
-        if (isMounted.current) {
+        if (isMounted()) {
           contactFormRef.current.setFieldsValues(contact);
 
           setContactName(contact.name);
@@ -37,7 +37,7 @@ export default function EditContact() {
           setIsLoading(false);
         }
       } catch {
-        if (isMounted.current) {
+        if (isMounted()) {
           history.push('/');
           toast({
             type: 'danger',
