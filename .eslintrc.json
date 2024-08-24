@@ -50,6 +50,7 @@
       {
         "allowEmptyCatch": true
       }
-    ]
+    ],
+    "react/require-default-props": "off"
   }
 }
